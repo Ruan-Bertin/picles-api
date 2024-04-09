@@ -19,7 +19,7 @@ export default class GetShelterDetailsUseCase implements IUseCase<null, GetShelt
             shelterPhone: shelter.phone,
             shelterWhatsApp: shelter.whatsApp,
             createdAt: shelter.createdAt,
-            updateAt: shelter.updateAt,
+            updatedAt: shelter.updatedAt,
         });
     }
 }
