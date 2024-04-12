@@ -6,8 +6,11 @@ import PetRepository from './pet.repository';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Pet, PetSchema } from './schemas/pet.schema';
 import GetPetByIdUseCase from './usecases/get.pet.by.id.usecase';
-import UpdatePetByIdUseCase from './usecases/update.pet.usecase';
+import UpdatePetByIdUseCase from './usecases/update.pet.by.id.usecase';
 import DeletePetByIdUseCase from './usecases/delete.pet.by.id.usecase';
+import UpdatePetPhotoByIdUseCase from './usecases/update.pet.photo.by.id.usecase';
+import AppTokens from 'src/app.tokens';
+import FileService from 'src/file.service';
 
 @Module({
   controllers: [PetController],
@@ -32,6 +35,14 @@ import DeletePetByIdUseCase from './usecases/delete.pet.by.id.usecase';
     {
       provide: PetTokens.deletePetByIdUseCase,
       useClass: DeletePetByIdUseCase
+    },
+    {
+      provide: PetTokens.updatePetPhotoByIdUseCase,
+      useClass: UpdatePetPhotoByIdUseCase
+    },
+    {
+      provide: AppTokens.fileService,
+      useClass: FileService
     }
   ]
 })
