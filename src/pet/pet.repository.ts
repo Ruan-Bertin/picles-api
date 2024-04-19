@@ -14,7 +14,7 @@ export default class PetRepository implements IPetRepository{
     ){}
 
     async findByFilter(input: GetPetsUseCaseInput): Promise<FindByFilterAndTotal> {
-        
+        console.log(input)
         const FIRST_PAGE =1;
         const skip = input.page == FIRST_PAGE ? 0 : input.itemsPerPage * (input.page - 1);
 
@@ -25,12 +25,12 @@ export default class PetRepository implements IPetRepository{
         }
 
         if (input.size) {
-            query = query.find({ type: input.size});
+            query = query.find({ size: input.size});
 
         }
 
         if (input.gender) {
-            query = query.find({ type: input.gender});
+            query = query.find({ gender: input.gender});
         }
 
         const totalQuery = query.clone().clone().countDocuments();
