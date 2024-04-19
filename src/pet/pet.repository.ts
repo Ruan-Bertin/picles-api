@@ -14,7 +14,6 @@ export default class PetRepository implements IPetRepository{
     ){}
 
     async findByFilter(input: GetPetsUseCaseInput): Promise<FindByFilterAndTotal> {
-        console.log(input)
         const FIRST_PAGE =1;
         const skip = input.page == FIRST_PAGE ? 0 : input.itemsPerPage * (input.page - 1);
 
