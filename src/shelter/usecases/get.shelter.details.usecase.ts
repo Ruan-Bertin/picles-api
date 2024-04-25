@@ -14,10 +14,10 @@ export default class GetShelterDetailsUseCase implements IUseCase<null, GetShelt
         const shelter = await this.shelterRepository.get();
 
         return new GetShelterDetailsUseCaseOutput({
-            shelterName: shelter.name,
-            shelterEmail: shelter.email,
-            shelterPhone: shelter.phone,
-            shelterWhatsApp: shelter.whatsApp,
+            name: shelter.name,
+            email: shelter.email,
+            phone: shelter.phone,
+            whatsApp: shelter.whatsApp,
             createdAt: shelter.createdAt,
             updatedAt: shelter.updatedAt,
         });
